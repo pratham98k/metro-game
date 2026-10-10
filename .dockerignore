@@ -1,0 +1,6 @@
+.git
+.dart_tool
+build
+coverage
+.idea
+.DS_Store

@@ -1,0 +1,16 @@
+name: Validate game
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Format, analyze, and test
+        run: docker compose --profile test run --build --rm test
+      - name: Build release image
+        run: docker compose build game

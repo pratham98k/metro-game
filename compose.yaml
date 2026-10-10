@@ -1,0 +1,15 @@
+services:
+  game:
+    build:
+      context: .
+      target: web
+    platform: linux/amd64
+    ports:
+      - "127.0.0.1:${PORT:-8080}:8080"
+    restart: unless-stopped
+  test:
+    build:
+      context: .
+      target: test
+    platform: linux/amd64
+    profiles: [test]
